@@ -1,0 +1,47 @@
+﻿@model List<CharacterViewModel>
+
+@{
+    ViewData["Title"] = "FavoritePage";
+}
+
+@if (TempData["success"] != null)
+{
+    <div class="col-6 offset-3">
+        <partial name="_AlerSuccessPartial" model="@(TempData["success"]!.ToString())"></partial>
+    </div>
+}
+
+<div class="row border border-4 p-2 " style="border-radius:20px; border-color:#AAE4FE !important;">
+
+
+    <div class="text-center mb-3">
+        <h3 style="color:#AAE4FE !important;">Favori Karakterler</h3>
+    </div>
+
+    @foreach (CharacterViewModel item in Model)
+    {
+        <div class="col-sm-12 col-md-6 col-lg-3 mb-3">
+            <div class="card" style="border-radius:15px;">
+                <a asp-controller="Character" asp-action="CharacterDetail" asp-route-id="@item.Id">
+                    <img src="@item.Image" class="card-img-top" alt="Resim Yüklenemedi" style="border-top-left-radius:15px; border-top-right-radius:15px;">
+                </a>
+                <div class="card-body text-center">
+                    <div class="text-center">
+                        <a asp-controller="Character" asp-action="CharacterDetail" asp-route-id="@item.Id" style="text-decoration:none; color:#AAE4FE !important;">
+                            <h4>@item.Name</h4>
+                        </a>
+                    </div>
+
+                    <a class="btn btn-outline-danger mt-2" style="border-radius:20px;" asp-area="" asp-controller="Character" asp-action="DeleteFromFav" asp-route-id="@item.Id">
+                        Favoriden Sil
+                    </a>
+
+                </div>
+            </div>
+        </div>
+    }
+
+
+</div>
+
+

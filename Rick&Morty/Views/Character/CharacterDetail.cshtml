@@ -1,0 +1,88 @@
+﻿@model CharacterViewModel
+
+@{
+    ViewData["Title"] = "CharacterDetail";
+}
+
+@section Css{
+
+    <style>
+
+        .status {
+            display: flex;
+            align-items: center;
+            text-transform: capitalize;
+            text-align: center;
+        }
+
+            .status .status-icon {
+                height: 0.5rem;
+                width: 0.5rem;
+                margin-right: 0.375rem;
+                border-radius: 50%;
+            }
+
+    </style>
+}
+
+<div class="row border border-4 p-2 " style="border-radius:20px; border-color:#AAE4FE !important;">
+
+    <div class="col-12 col-md-4 offset-md-4 d-flex justify-content-center">
+        <img src="@Model.Image" alt="Resim Yüklenemedi">
+    </div>
+
+    <div class="row mt-3">
+        <h2 class="text-center" style="color:#AAE4FE !important;">@Model.Name</h2>
+
+        @if (Model.Status == "Dead")
+        {
+            <span class="status justify-content-center">
+                <span class="status-icon bg-danger"></span>
+                @Model.Status - @Model.Species
+
+            </span>
+        }
+        else if (Model.Status == "Alive")
+        {
+            <span class="status justify-content-center mt-2">
+                <span class="status-icon bg-success"></span>
+                @Model.Status - @Model.Species
+            </span>
+        }
+        else
+        {
+            <span class="status justify-content-center">
+                <span class="status-icon bg-warning"></span>
+                @Model.Status - @Model.Species
+            </span>
+        }
+
+        @if (string.IsNullOrEmpty(Model.Type))
+        {
+            <p class="text-center mt-2 mb-1"><span class="text-primary">Type : </span> None</p>
+        }
+        else
+        {
+            <p class="text-center mt-2 mb-1"><span class="text-primary">Type : </span> @Model.Type</p>
+        }
+
+        <p class="text-center mt-1 mb-1"><span class="text-primary">Gender : </span> @Model.Gender</p>
+
+        <p class="text-center mt-1"><span class="text-primary">Created : </span> @Model.Created</p>
+
+
+        <div class="border border-2 text-center p-3" style="border-color:#AAE4FE !important; border-radius:20px;">
+            <h5 class="text-primary mb-3">Bulunduğu Bölümler</h5>
+
+            @foreach (EpisodeCharactersViewModel item in Model.EpisodeCharacters!)
+            {
+                <a class="border-bottom border-primary m-3 text-nowrap" asp-area="" asp-controller="Episode" asp-action="EpisodeDetail" asp-route-id="@item.EpisodeId" style="text-decoration:none; border-color:black !important;">
+                    <span class="text-primary" style="color:deepskyblue; font-size:x-large;">Bölüm : </span> <span class="text-dark" style="font-size:x-large;">@item.EpisodeId</span>
+                </a>                
+            }
+
+        </div>
+
+    </div>
+
+</div>

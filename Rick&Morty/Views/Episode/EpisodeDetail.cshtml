@@ -1,0 +1,50 @@
+﻿@model EpisodeViewModel
+
+@{
+    ViewData["Title"] = "EpisodeDetail";
+}
+
+<div class=" border border-4 p-2 " style="border-radius:20px; border-color:#AAE4FE !important;">
+
+    <div class="col-12 col-md-4 offset-md-4 d-flex justify-content-center" style="color:#AAE4FE !important;">
+        <h1>@Model.Name</h1>
+    </div>
+
+    <div class="row mt-3">
+
+        <p class="text-center mt-1 mb-1"><span class="text-primary">Episode Code : </span> @Model.EpisodeCode</p>
+
+        <p class="text-center mt-1 mb-1"><span class="text-primary">Air Date : </span> @Model.AirDate</p>
+
+        <p class="text-center mt-1"><span class="text-primary">Created : </span> @Model.Created</p>
+
+        <div class="d-flex justify-content-center">
+            <div class="border border-2 text-center p-3" style="border-color:#AAE4FE !important; border-radius:20px;">
+                <h3 class="text-primary mb-4">Bölümde Bulunan Karakterler</h3>
+
+                <div class="row">
+                    @foreach (EpisodeCharactersViewModel item in Model.EpisodeCharacters!)
+                    {
+                        <div class="col-sm-12 col-md-6 col-lg-3 mb-3">
+                            <div class="card" style="border-radius:15px;">
+                                <a asp-controller="Character" asp-action="CharacterDetail" asp-route-id="@item.Character.Id">
+                                    <img src="@item.Character.Image" class="card-img-top" alt="Resim Yüklenemedi" style="border-top-left-radius:15px; border-top-right-radius:15px;">
+                                </a>
+                                <div class="card-body">
+                                    <div class="text-center">
+                                        <a asp-controller="Character" asp-action="CharacterDetail" asp-route-id="@item.Character.Id" style="text-decoration:none; color:#AAE4FE !important;">
+                                            <h4>@item.Character.Name</h4>
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    }
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
