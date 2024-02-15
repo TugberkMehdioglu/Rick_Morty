@@ -1,3 +1,5 @@
+# [Project Showcase](https://www.youtube.com/watch?v=xXqnGWuNDjA)
+
 ## Hikaye:
   - SOLID prensiplerine uygun bir şekilde Rick & Morty çizgi dizisinin açık API aracılığı ile çizgi karakterleri tanıtan bir web sayfası hazırlanmalıdır.
   - .Net Core teknolojileri kullanılarak Web servisi hazırlanıp, DB (MSSql ya da SQLite) ortamına kaydedilmelidir.
