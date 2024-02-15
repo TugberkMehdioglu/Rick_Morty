@@ -1,7 +1,7 @@
 ## Hikaye:
   - SOLID prensiplerine uygun bir şekilde Rick & Morty çizgi dizisinin açık API aracılığı ile çizgi karakterleri tanıtan bir web sayfası hazırlanmalıdır.
   - .Net Core teknolojileri kullanılarak Web servisi hazırlanıp, DB (MSSql ya da SQLite) ortamına kaydedilmelidir.
-  - [API Link](https://www.youtube.com/watch?v=IyNmg6K-tEU](https://rickandmortyapi.com/)
+  - [API Link](https://rickandmortyapi.com/)
 
 ## İstekler:
   - https://rickandmortyapi.com/api/episode API araclığı ile gelen tüm bölümlere ait veriler
